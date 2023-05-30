@@ -2,6 +2,8 @@
 #include <floatobject.h>
 
 void print_python_list(PyObject *p) {
+    setbuf(stdout, NULL);  // Disable buffering for stdout
+
     PyListObject *list = (PyListObject *)p;
 
     if (!PyList_Check(p)) {
@@ -67,6 +69,8 @@ void print_python_list(PyObject *p) {
             printf("unknown\n");
         }
     }
+
+    fflush(stdout);  // Flush the stdout buffer
 }
 
 int main() {
